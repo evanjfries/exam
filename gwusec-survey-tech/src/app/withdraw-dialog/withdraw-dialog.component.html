@@ -1,0 +1,30 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="withdrawDialogBackdropLabel">Withdraw from the Survey</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()">
+  </button>
+</div>
+
+<ng-container *ngIf="survey; else noSurvey">
+  <div class="modal-body">
+    Do you really want to withdraw from the survey?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-success" (click)="activeModal.dismiss()">
+      No, take me back
+    </button>
+    <button type="button" class="btn btn-danger" (click)="withdraw()">
+      Yes, I want to withdraw
+    </button>
+  </div>
+</ng-container>
+
+<ng-template #noSurvey>
+  <div class="alert alert-danger" role="alert">
+    No Survey specified!
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.dismiss()">
+      Close
+    </button>
+  </div>
+</ng-template>

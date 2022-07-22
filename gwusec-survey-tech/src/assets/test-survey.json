@@ -1,0 +1,323 @@
+{
+  "focusFirstQuestionAutomatic": false,
+  "completedHtml": "<div class=\"container mb-4\"><div class=\"bg-light p-5\"><h4>Thank you for participating in this survey!</h4><hr class=\"my-4\"><p class=\"lead\">Please click the button below to complete the study and return to Prolific.</p></div></div><surveyjs-feedback-form></surveyjs-feedback-form>",
+  "completedHtmlOnCondition": [
+    {
+      "expression": "{has_withdrawn} = true",
+      "html": "<div class=\"container mb-4\"><div class=\"bg-light p-5\"><h4>You have successfully withdrawn from this survey. Thank you for participating!</h4><hr class=\"my-4\"><p class=\"lead\">We will not use your answers. Please return the task in Prolific so that others may take the survey. You may close this browser window now.</p></div></div><surveyjs-feedback-form withdrawn=\"true\"></surveyjs-feedback-form>"
+    }
+  ],
+  "pages": [
+    {
+      "name": "consent_page",
+      "elements": [
+        {
+          "type": "html",
+          "name": "consent_text",
+          "html": "<html><h4 class=\"text-uppercase\">Participant Informed Consent Form</h4><p class=\"lead\">The following information is provided to inform you about the research project and your participation in it. Your participation in this research study is voluntary. You are free to withdraw from this study at any time prior to submitting the survey.</p><h5>1. Purpose of the Study</h5><p>You are being asked to participate in a research study investigating people’s awareness and concerns about data collection and ad interests practices of companies like Google. This page will give you key information to help you decide whether or not you want to participate.</p><p>The goal of this research is to measure your experience with Google’s Ad Settings page.</p><p>It will require that you install a browser plugin, which we provide instructions for removing at the end of the study.</p><h5>2. Who Is Eligible to Participate?</h5><p>This study requires the use of a <i>Chrome</i> or <i>Firefox</i> browser on a desktop or laptop computer. You may not participate on a mobile device or tablet, or using a Safari browser.</p><p>You must be at least 18 years old or older to participate in this study.</p><h5>3. Description of Procedures to Be Followed and Approximate Time Duration Involved for the Participants</h5><p>The study should take between 10 minutes and 30 minutes to complete. The study will ask participants to follow detailed step-by-step instructions for the installation of a web browser extension. At the end of the study you will be provided with detailed instructions for the removal of the web browser extension.</p><p>Throughout the study you may encounter attention check questions. Such questions are designed to make sure that survey participants’ attention is at a high level throughout the entire survey</p><h5>4. Expected Costs</h5><p>There are no costs for your participation.</p><h5>5. Description of the Discomforts, Inconveniences, and/or Risks That Can Be Reasonably Expected as a Result of Participation</h5><p>You will be asked to install a web browser extension that works on the desktop versions of <i>Chrome</i> or <i>Firefox</i>. The browser extension will analyze your Google Ad Settings and My Activity page locally in your browser and will not be released to the researchers as part of your data record. Only your study responses are collected as well as some specific activities, such as search terms and sites visited from those searches. We will also collect all the ad interests associated with you by Google.</p><p>Before sharing any specific activities, we will ask for your specific consent again during the study before transmitting and sharing those activities with the researchers. You may complete this study even if you choose to not share any specific activities during the course of the survey.</p><p>There are always risks to installing software on your computer. We have designed and extensively tested the web browser extension to only access the Google My Activity and Ad Settings pages, and once the web browser extension is removed, all local analyzed information is also removed. We will also give detailed directions on how to remove the web browser extension.</p><p>There is also a risk of loss of confidentiality. We will ensure that your research record is not linked to any personal information, and we will also remove any inadvertent personal information you may include in a long form response.</p><p>Beyond the data you provide directly, we will perform additional analysis that may include using your activities to determine specific interests learned from them by replicating those activities on a fresh Google Account. That data will be deleted following the analysis.</p><p>Additionally, we will perform statistical tests that could reveal relationships between your Google advertising interests and your demographic information. This analysis will only occur on data that is non-identifiable and is highly unlikely to be traced back to you.</p><h5>6. Anticipated Benefits From This Study</h5><p>Through the course of the study, you may become more aware of how to manage and access your Google My Activity and/or your Google Ad interests. Additionally, your participation will help to advance new designs for personal information management.</p><h5>7. Compensation for Participation</h5><p>You will be compensated $5.00 for completion of the survey.</p><h5>8. Circumstances Under Which the Principal Investigator May Withdraw You From the Study</h5><p>If you fail attention tests or other checks in the survey, you may be withdrawn from the study by either having your data removed and/or rejecting your responses in the survey system.</p><h5>9. What Happens if You Choose to Withdraw From the Study</h5><p>You may withdraw from the study at any point prior to the final submission of the survey. Upon withdrawal your partially completed survey data will be removed and will not be used in the study.</p><p>If you wish to withdraw from the main study, you need to click the &ldquo;Opt-Out&rdquo; button which will provide instructions for removing the web browser extension. Once removed, you may abandon the survey.</p><p>In both cases we ask that you also return the task in Prolific so that others may take the survey.</p><h5>10. Contact Information</h5><p>This research is being conducted by Dr. Adam J. Aviv in the Computer Science Department at The George Washington University. You may contact Dr. Aviv with any questions or concerns by email <a href=\"mailto:aaviv@gwu.edu\">aaviv@gwu.edu</a> or by phone <a href=\"tel:+12029946569\">202-994-6569</a>.</p><p>You may also contact the GWU Office of Human Research at <a href=\"tel:+12029942715\">202‐994‐2715</a> or <a href=\"mailto:ohrirb@gwu.edu\">ohrirb@gwu.edu</a> if you have questions or comments regarding your rights as a participant in the research.</p><p>This research has been reviewed according to the GWU&rsquo;s procedures governing your participation in this research. IRB Approval NCR213523.</p><h5>11. Confidentiality</h5><p>All efforts will be made to keep the personal information in your research record private. We will not directly link any personal identifying information with your survey response. However, complete confidentiality cannot be promised. Your information may be shared with the GWU Institutional Review Board.</p><p>We may use unattributed quotes and aggregate data in research reports in journals or at scientific meetings, but the people who participated in this study will not be named or identified.</p><h5>12. Use of Data in Future Studies</h5><p>We will create a publicly available dataset that does not contain identifiable information from you based on the survey responses. This dataset can be used by the research team or shared with other researchers without additional informed consent. This dataset will consist of the answers provided in this survey.</p></html>"
+        },
+        {
+          "type": "matrixdropdown",
+          "name": "informed_consent",
+          "title": "Statement by person agreeing to participate in this study",
+          "hideNumber": true,
+          "isRequired": true,
+          "requiredErrorText": "Please answer the following questions.",
+          "validators": [
+            {
+              "type": "expression",
+              "text": "Not all requirements for participation are fulfilled.",
+              "expression": "{informed_consent.age.confirmation} = true and {informed_consent.read.confirmation} = true and {informed_consent.participation.confirmation} = true"
+            }
+          ],
+          "showHeader": false,
+          "columns": [
+            {
+              "name": "confirmation"
+            }
+          ],
+          "cellType": "boolean",
+          "rows": [
+            {
+              "value": "age",
+              "text": "I am 18 years of age, or older"
+            },
+            {
+              "value": "read",
+              "text": "I have read and understand the informed consent"
+            },
+            {
+              "value": "participation",
+              "text": "I consent to participate in the research"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "survey_instructions_page",
+      "elements": [
+        {
+          "type": "html",
+          "name": "survey_instructions",
+          "html": "<div class=\"bg-light p-5\"><h4>Thank you for your interest in our survey.</h4><p class=\"lead\">Your answers are important to us!</p><hr class=\"my-4\"><p>Please read the following instructions carefully:</p><ul><li>Take your time in reading and answering the questions.</li><li>Answer the questions as accurately as possible.</li><li>It is okay to say that you don’t know an answer.</li><li>Some questions asked for estimations, so it’s okay to guess if you don’t know the exact answer.</li></ul>\n</div>"
+        }
+      ]
+    },
+    {
+      "name": "google_account_usage_page1",
+      "elements": [
+        {
+          "type": "radiogroup",
+          "name": "s1",
+          "title": "Do you have a personal Gmail address (an email address ending in \"gmail.com\")?",
+          "description": "Please select one answer.",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Yes",
+              "text": "Yes"
+            },
+            {
+              "value": "No",
+              "text": "No"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "s2",
+          "title": "How long have you had that Gmail address?",
+          "description": "Please select one answer.",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Less than a year",
+              "text": "Less than a year"
+            },
+            {
+              "value": "One year",
+              "text": "One year"
+            },
+            {
+              "value": "Three years",
+              "text": "Three years"
+            },
+            {
+              "value": "Five years",
+              "text": "Five years"
+            },
+            {
+              "value": "More than five years",
+              "text": "More than five years"
+            },
+            {
+              "value": "I do not have a Gmail address",
+              "text": "I do not have a Gmail address"
+            },
+            {
+              "value": "Unsure",
+              "text": "Unsure"
+            }
+          ]
+        },
+        {
+          "type": "imagepicker",
+          "name": "s3",
+          "title": "Which Google products do you currently use?",
+          "description": "Please select all services you use by clicking the logo.",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "android",
+              "text": "Android",
+              "imageLink": "assets/icons/android.svg"
+            },
+            {
+              "value": "gmail",
+              "text": "Gmail",
+              "imageLink": "assets/icons/gmail.svg"
+            },
+            {
+              "value": "google_chrome",
+              "text": "Google Chrome",
+              "imageLink": "assets/icons/google-chrome.svg"
+            },
+            {
+              "value": "google_drive",
+              "text": "Google Drive",
+              "imageLink": "assets/icons/google-drive.svg"
+            },
+            {
+              "value": "google_maps",
+              "text": "Google Maps",
+              "imageLink": "assets/icons/google-maps.svg"
+            },
+            {
+              "value": "google_news",
+              "text": "Google News",
+              "imageLink": "assets/icons/google-news.svg"
+            },
+            {
+              "value": "google_pay",
+              "text": "Google Pay",
+              "imageLink": "assets/icons/google-pay.svg"
+            },
+            {
+              "value": "google_play_store",
+              "text": "Google Play Store",
+              "imageLink": "assets/icons/google-play.svg"
+            },
+            {
+              "value": "google_search",
+              "text": "Google Search",
+              "imageLink": "assets/icons/google-search.svg"
+            },
+            {
+              "value": "youtube",
+              "text": "YouTube",
+              "imageLink": "assets/icons/youtube.svg"
+            },
+            {
+              "value": "none",
+              "text": "None",
+              "imageLink": "assets/icons/icon-none.svg"
+            }
+          ],
+          "colCount": 4,
+          "showLabel": true,
+          "multiSelect": true,
+          "imageHeight": 96,
+          "imageWidth": 96
+        }
+      ]
+    },
+    {
+      "name": "google_account_usage_page2",
+      "elements": [
+        {
+          "type": "matrix",
+          "name": "s4",
+          "visibleIf": "{s3} notempty and {s3} notcontains ['none']",
+          "title": "How frequently do you use these products?",
+          "description": "Please select one answer in each row.",
+          "isRequired": true,
+          "rowsVisibleIf": "{s3} contains {item}",
+          "columns": [
+            {
+              "value": "Always",
+              "text": "Always"
+            },
+            {
+              "value": "Often",
+              "text": "Often"
+            },
+            {
+              "value": "Sometimes",
+              "text": "Sometimes"
+            },
+            {
+              "value": "Rarely",
+              "text": "Rarely"
+            },
+            {
+              "value": "Never",
+              "text": "Never"
+            },
+            {
+              "value": "Unsure",
+              "text": "Unsure"
+            }
+          ],
+          "rows": [
+            {
+              "value": "android",
+              "text": "<img src=\"assets/icons/android.svg\" alt=\"Android\" width=\"24px\" height=\"24px\"> Android"
+            },
+            {
+              "value": "gmail",
+              "text": "<img src=\"assets/icons/gmail.svg\" alt=\"Gmail\" width=\"24px\" height=\"24px\"> Gmail"
+            },
+            {
+              "value": "google_chrome",
+              "text": "<img src=\"assets/icons/google-chrome.svg\" alt=\"Google Chrome\" width=\"24px\" height=\"24px\"> Google Chrome"
+            },
+            {
+              "value": "google_drive",
+              "text": "<img src=\"assets/icons/google-drive.svg\" alt=\"Google Drive\" width=\"24px\" height=\"24px\"> Google Drive"
+            },
+            {
+              "value": "google_maps",
+              "text": "<img src=\"assets/icons/google-maps.svg\" alt=\"Google Maps\" width=\"24px\" height=\"24px\"> Google Maps"
+            },
+            {
+              "value": "google_news",
+              "text": "<img src=\"assets/icons/google-news.svg\" alt=\"Google News\" width=\"24px\" height=\"24px\"> Google News"
+            },
+            {
+              "value": "google_pay",
+              "text": "<img src=\"assets/icons/google-pay.svg\" alt=\"Google Pay\" width=\"24px\" height=\"24px\"> Google Pay"
+            },
+            {
+              "value": "google_play_store",
+              "text": "<img src=\"assets/icons/google-play.svg\" alt=\"Google Play Store\" width=\"24px\" height=\"24px\"> Google Play Store"
+            },
+            {
+              "value": "google_search",
+              "text": "<img src=\"assets/icons/google-search.svg\" alt=\"Google Search\" width=\"24px\" height=\"24px\"> Google Search"
+            },
+            {
+              "value": "youtube",
+              "text": "<img src=\"assets/icons/youtube.svg\" alt=\"YouTube\" width=\"24px\" height=\"24px\"> YouTube"
+            }
+          ],
+          "isAllRowRequired": true
+        },
+        {
+          "type": "radiogroup",
+          "name": "s5",
+          "title": "How important is using Google products to your Internet experience?",
+          "description": "Please select one answer.",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Not important",
+              "text": "Not important"
+            },
+            {
+              "value": "Slightly important",
+              "text": "Slightly important"
+            },
+            {
+              "value": "Moderately important",
+              "text": "Moderately important"
+            },
+            {
+              "value": "Important",
+              "text": "Important"
+            },
+            {
+              "value": "Very important",
+              "text": "Very important"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "triggers": [
+    {
+      "type": "runexpression",
+      "expression": "{s3} contains ['none']",
+      "setToName": "s3",
+      "runExpression": "toggleNone('none', {s3})"
+    }
+  ],
+  "sendResultOnPageNext": true,
+  "showPrevButton": false,
+  "showProgressBar": "bottom",
+  "progressBarType": "pages",
+  "showQuestionNumbers": "off",
+  "firstPageIsStarted": true,
+  "widthMode": "responsive"
+}

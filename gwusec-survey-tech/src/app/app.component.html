@@ -1,0 +1,57 @@
+<!-- Top navigation bar -->
+<div>
+  <app-navbar>
+    <app-navbar-logo>
+      <a class="navbar-brand" href="https://www.gwu.edu/" target="_blank">
+        <img src="assets/images/logo.svg" alt="Logo" height="35">
+      </a>
+    </app-navbar-logo>
+    <app-navbar-content>
+      <ul class="navbar-nav mr-auto mt-2 mt-sm-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/">
+            Start
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" role="button" [attr.aria-expanded]="!isInfoTextCollapsed" aria-controls="moreInfo"
+             (click)="infoText.toggle()">
+            About
+          </a>
+        </li>
+        <ng-container *ngIf="(survey$ | async) as survey">
+          <ng-container *ngIf="survey?.state !== 'completed' && survey?.state !== 'empty'">
+            <li class="nav-item">
+              <a class="nav-link" role="button"
+                 (click)="openDialog(withdrawDialog)">
+                Opt-Out
+              </a>
+            </li>
+          </ng-container>
+        </ng-container>
+      </ul>
+    </app-navbar-content>
+  </app-navbar>
+
+  <!-- Collapsible study info text -->
+  <div #infoText="ngbCollapse" [(ngbCollapse)]="isInfoTextCollapsed">
+    <div class="card card-body alert-success alert-dismissible">
+      <h5 class="card-title">
+        <strong>Research Study:</strong> <em>Name of the Study goes here</em>
+      </h5>
+      <hr>
+      <strong>Principle Investigator:</strong> Dr. Adam J. Aviv, The George Washington University
+      <button class="btn-close" type="button" aria-expanded="false" aria-controls="moreInfo"
+              (click)="infoText.toggle()">
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Active view of the application -->
+<router-outlet></router-outlet>
+
+<!-- Modal Dialogs -->
+<ng-template #withdrawDialog let-modal>
+  <app-withdraw-dialog *ngIf="survey$ | async as survey" [activeModal]="modal" [survey]="survey"></app-withdraw-dialog>
+</ng-template>

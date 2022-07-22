@@ -1,0 +1,159 @@
+//.sv_main .sv_container .sv_body .sv_p_root .sv_q {
+//  padding: 0.5em 1em 1.5em 1em;
+//  box-sizing: border-box;
+//  overflow: auto;
+//}
+//
+//.sv_main .sv_p_root > .sv_row {
+//  border-bottom: 1px solid #e7e7e7;
+//}
+
+
+/* Fix order of labels and button of boolean question */
+.sv-boolean__order-fix > span:first-of-type {
+  order: -1;
+}
+/* End fix order of boolean question */
+
+/* Image checkbox custom css */
+.sv-imagecheckbox_text {
+  display: block;
+  text-align: center;
+}
+.sv-imagecheckbox {
+  user-select: none;
+  position: relative;
+  /*padding: .75rem 0;*/
+  margin: 0 .5rem .5rem 0;
+  display: inline-block;
+  color: #000;
+  transition-duration: 300ms;
+  border-radius: .25rem;
+}
+.sv-imagecheckbox>label:focus-within {
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem #d3d4d580;
+}
+.sv-imagecheckbox input {
+  display: block;
+  background-size: 100% 100%;
+  content: "";
+  color: white;
+  background-color: white;
+  font-weight: bold;
+  border: 1px solid #00000040;
+  border-radius: .25rem;
+  position: absolute;
+  margin: 0;
+  z-index: 1;
+  text-align: center;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.sv-imagecheckbox img {
+  padding: .75rem 0;
+  transform: scale(1);
+  transition-duration: 300ms;
+}
+.sv-imagecheckbox_hover>label:hover {
+  background-color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+.sv-imagecheckbox_checked>label {
+  background-color: #f8f9fa;
+}
+.sv-imagecheckbox_checked img {
+  transform: scale(0.8);
+  transition-duration: 300ms;
+}
+.sv-imagecheckbox_checked input {
+  border: none;
+
+  transition-duration: 300ms;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggIGZpbGw9IiNmZmYiIGQ9Ik01LDEzbDItMmwzLDNsNy03bDIsMmwtOSw5TDUsMTN6Ij48L3BhdGg+PC9zdmc+");
+  background-color: #007bff;
+}
+.sv_q_imgsel_control_item {
+  display: block !important;
+}
+/* End image checkbox custom css */
+
+
+/* Workaround for ranking style (changing css class names breaks ranking questions as of v1.8.30) */
+.sv-ranking-item__icon {
+  fill: var(--bs-primary) !important;
+}
+
+.sv-ranking-item__index {
+  background-color: var(--bs-primary) !important;
+  border: unset !important;
+  color: var(--bs-white);
+  margin-right: .25em;
+}
+
+.sv-ranking-item:focus .sv-ranking-item__index {
+  background-color: #0b5ed7 !important;
+  box-shadow: 0 0 0 .25rem #3184fd80 !important;
+}
+/* End workaround for ranking style */
+
+.btn-check:focus-within + .btn, .btn:focus-within {
+  outline: currentcolor none 0;
+  box-shadow: 0 0 0 0.25rem #0d6efd40;
+}
+
+.btn-check:focus-within + .btn-outline-light, .btn-outline-light:focus-within {
+  color: #000;
+  //background-color: #f9fafb;
+  //border-color: #f9fafb;
+  box-shadow: 0 0 0 .25rem #d3d4d580;
+}
+
+.btn-outline-light {
+  color: #000;
+}
+
+@media(max-width: 600px) {
+  .table > :not(:first-child) {
+    border-top: 0;
+  }
+
+  .sv_q_m_cell:not(:first-child,:last-child) {
+    border: 0;
+  }
+
+  .table-hover > tbody > tr:hover > * {
+    --bs-table-accent-bg: transparent;
+    color: var(--bs-table-active-color);
+  }
+
+  .table-striped > tbody > tr:nth-of-type(odd):hover > * {
+    --bs-table-accent-bg: var(--bs-table-striped-bg);
+    color: var(--bs-table-striped-color);
+  }
+
+  .table-hover > tbody > tr > td:not(:first-child):hover,
+  .table-striped > tbody > tr:nth-of-type(odd) > td:not(:first-child):hover {
+    --bs-table-accent-bg: var(--bs-table-hover-bg);
+    color: var(--bs-table-hover-color);
+  }
+}
+
+/* Fix form-group class */
+.form-group {
+  width: 100%;
+}
+/* End fix form-group class */
+
+
+textarea {
+  resize: vertical !important;
+}
+
+.sv-q-col-1 {
+  padding-right: 0 !important;
+}
+

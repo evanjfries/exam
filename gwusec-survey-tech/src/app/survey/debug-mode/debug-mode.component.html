@@ -1,0 +1,277 @@
+<div class="navbar navbar-expand-md navbar-dark bg-dark p-0 shadow sticky-top">
+  <div class="container-fluid gx-md-0">
+
+    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-md-3"
+       [attr.aria-expanded]="!uiState.sidebar.isCollapsed"
+       (click)="sidebar.toggle()"
+       [routerLink]="[]">
+      Debug Mode
+    </a>
+
+    <ul class="navbar-nav justify-content-between flex-grow-1 d-none d-md-flex">
+      <li class="nav-item" ngbDropdown display="dynamic">
+        <a class="nav-link" ngbDropdownToggle id="surveySelector" role="button">
+          Select Survey
+        </a>
+        <ul ngbDropdownMenu class="dropdown-menu dropdown-menu-dark" aria-labelledby="surveySelector">
+          <li *ngFor="let surveyName of (surveyNames$ | async)">
+            <a ngbDropdownItem [routerLink]="['../../', surveyName, 'debug']">
+              {{surveyName}}
+            </a>
+          </li>
+        </ul>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="../">Leave Debug Mode</a>
+      </li>
+    </ul>
+
+    <button class="navbar-toggler d-md-none" type="button"
+            (click)="sidebar.toggle()" [attr.aria-expanded]="!uiState.sidebar.isCollapsed"
+            aria-controls="sidebar" aria-expanded="false"
+            aria-label="Toggle Debug Menu">
+      <i class="bi bi-arrows-expand fs-4"></i>
+    </button>
+  </div>
+</div>
+
+<div class="container-fluid p-0 flex-basis-100 overflow-auto">
+<div class="row gx-0 h-100">
+  <nav class="col-md-3 col-lg-2 bg-light border-end border-bottom collapse width"
+       #sidebar="ngbCollapse"
+       [(ngbCollapse)]="uiState.sidebar.isCollapsed">
+    <div class="p-3">
+
+      <!--        <div class="position-absolute top-0 end-0 d-md-none">-->
+      <!--          <div class="p-3">-->
+      <!--            <a class="link-dark" routerLink="../">Leave Debug Mode</a>-->
+      <!--          </div>-->
+      <!--        </div>-->
+
+      <ng-container *ngIf="(survey$ | async) as survey">
+        <ng-template #previousPageButton>
+          <ng-container *ngIf="survey.state === 'starting'; else enablePreviousPageButton">
+            <a class="link-dark rounded disabled" role="button" tabindex="-1" [routerLink]="[]" aria-disabled="true">
+              <i class="bi bi-arrow-left-circle-fill"></i> Previous Page
+            </a>
+          </ng-container>
+          <ng-template #enablePreviousPageButton>
+            <a class="link-dark rounded" role="button" [routerLink]="[]" (click)="previousPage(survey)">
+              <i class="bi bi-arrow-left-circle-fill"></i> Previous Page
+            </a>
+          </ng-template>
+        </ng-template>
+        <ng-template #nextPageButton>
+          <ng-container *ngIf="survey.state === 'completed'; else enableNextPageButton">
+            <a class="link-dark rounded disabled" role="button" tabindex="-1" [routerLink]="[]" aria-disabled="true">
+              <i class="bi bi-arrow-right-circle-fill"></i> Next Page
+            </a>
+          </ng-container>
+          <ng-template #enableNextPageButton>
+            <a class="link-dark rounded" role="button" [routerLink]="[]" (click)="nextPage(survey)">
+              <i class="bi bi-arrow-right-circle-fill"></i> Next Page
+            </a>
+          </ng-template>
+        </ng-template>
+        <ng-template #completeSurveyButton>
+          <ng-container *ngIf="survey.state === 'completed'; else enableCompletePageButton">
+            <a class="link-dark rounded disabled" role="button" tabindex="-1" [routerLink]="[]" aria-disabled="true">
+              <i class="bi bi-check-circle-fill"></i> Complete Survey
+            </a>
+          </ng-container>
+          <ng-template #enableCompletePageButton>
+            <a class="link-dark rounded" role="button" [routerLink]="[]" (click)="completeSurvey(survey)">
+              <i class="bi bi-check-circle-fill"></i> Complete Survey
+            </a>
+          </ng-template>
+        </ng-template>
+        <ng-template #restartSurveyButton>
+          <ng-container *ngIf="survey.state === 'starting'; else enableRestartSurveyButton">
+            <a class="link-dark rounded disabled" role="button" tabindex="-1" [routerLink]="[]" aria-disabled="true">
+              <i class="bi bi-arrow-counterclockwise"></i> Restart Survey
+            </a>
+          </ng-container>
+          <ng-template #enableRestartSurveyButton>
+            <a class="link-dark rounded" role="button" [routerLink]="[]" (click)="clearSurvey(survey)">
+              <i class="bi bi-arrow-counterclockwise"></i> Restart Survey
+            </a>
+          </ng-template>
+        </ng-template>
+        <ng-template #clearSurveyButton>
+          <ng-container *ngIf="isDataEmpty(survey); else enableClearSurveyButton">
+            <a class="link-dark rounded disabled" role="button" tabindex="-1" [routerLink]="[]" aria-disabled="true">
+              <i class="bi bi-x-circle-fill"></i> Clear Survey
+            </a>
+          </ng-container>
+          <ng-template #enableClearSurveyButton>
+            <a class="link-dark rounded" role="button" [routerLink]="[]" (click)="clearSurvey(survey, true, false)">
+              <i class="bi bi-x-circle-fill"></i> Clear Survey
+            </a>
+          </ng-template>
+        </ng-template>
+        <ng-template #showInvisibleElementsButton>
+          <input id="showInvisibleElementsButton" class="btn-check" type="checkbox"
+                 [(ngModel)]="survey.showInvisibleElements">
+          <label class="link-dark rounded" for="showInvisibleElementsButton">
+            <i class="bi" [class.bi-eye-fill]="survey.showInvisibleElements" [class.bi-eye-slash-fill]="!survey.showInvisibleElements" ></i> Show Invisible Elements
+          </label>
+        </ng-template>
+
+
+        <ul class="list-unstyled ps-0">
+          <li class="mb-1">
+            <button class="btn btn-toggle rounded w-100 text-truncate"
+                    (click)="navigationCollapse.toggle()"
+                    [attr.aria-expanded]="!uiState.sidebar.navigation.isCollapsed">
+              <span class="text-truncate">
+                Navigation
+              </span>
+            </button>
+            <div #navigationCollapse="ngbCollapse" [(ngbCollapse)]="uiState.sidebar.navigation.isCollapsed">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <ng-container *ngTemplateOutlet="previousPageButton"></ng-container>
+                </li>
+                <li>
+                  <ng-container
+                    *ngIf="!survey.isLastPage; then nextPageButton;else completeSurveyButton"></ng-container>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="mb-1">
+            <button class="btn btn-toggle rounded w-100" (click)="operationsCollapse.toggle()"
+                    [attr.aria-expanded]="!uiState.sidebar.operations.isCollapsed">
+              <span class="text-truncate">
+                Survey Operations
+              </span>
+            </button>
+            <div #operationsCollapse="ngbCollapse" [(ngbCollapse)]="uiState.sidebar.operations.isCollapsed">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li>
+                  <ng-container *ngTemplateOutlet="completeSurveyButton"></ng-container>
+                </li>
+                <li>
+                  <ng-container *ngTemplateOutlet="restartSurveyButton"></ng-container>
+                </li>
+                <li>
+                  <ng-container *ngTemplateOutlet="clearSurveyButton"></ng-container>
+                </li>
+                <li>
+                  <ng-container *ngTemplateOutlet="showInvisibleElementsButton"></ng-container>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="mb-1">
+            <button class="btn btn-toggle rounded w-100 text-truncate"
+                    (click)="pagesCollapse.toggle()"
+                    [attr.aria-expanded]="!uiState.sidebar.pages.isCollapsed">
+              <span class="text-truncate">
+                Pages
+              </span>
+            </button>
+            <div #pagesCollapse="ngbCollapse" [(ngbCollapse)]="uiState.sidebar.pages.isCollapsed">
+              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                <li class="overflow-hidden" *ngFor="let page of survey.pages">
+                  <ng-container *ngIf="page.isVisible; else surveyPageIsInvisible">
+                    <input [attr.id]="'surveyPage' + page.name" class="btn-check" type="radio"
+                           name="surveyPages"
+                           [ngModel]="getCurrentPage(survey)"
+                           [value]="page"
+                           (click)="gotoPage(survey, page)">
+                    <label class="link-dark rounded" [attr.for]="'surveyPage' + page.name">
+                      {{survey.visiblePages.indexOf(page)}} - {{page.name}}
+                    </label>
+
+                    <!--                      <a class="link-dark rounded" role="button"-->
+                    <!--                         [routerLink]=""-->
+                    <!--                         (click)="gotoPage(survey, page)">-->
+                    <!--                        {{survey.visiblePages.indexOf(page)}} - {{page.name}}-->
+                    <!--                      </a>-->
+                  </ng-container>
+                  <ng-template #surveyPageIsInvisible>
+                    <input [attr.id]="'surveyPage' + page.name"  class="btn-check" type="radio"
+                           tabindex="-1"
+                           disabled
+                           name="surveyPages"
+                           [ngModel]="getCurrentPage(survey)"
+                           [value]="page">
+                    <label class="link-dark rounded" [attr.for]="'surveyPage' + page.name">
+                      # - {{page.name}}
+                    </label>
+
+                    <!--                      <a class="link-dark rounded" role="button" tabindex="-1"-->
+                    <!--                         [routerLink]="" [class.disabled]="true">-->
+                    <!--                        # - {{page.name}}-->
+                    <!--                      </a>-->
+                  </ng-template>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+
+        <div class="border-top my-3"></div>
+
+        <h6 class="text-muted px-2 py-1">
+          <span>Survey Info</span>
+        </h6>
+        <div class="input-group input-group-sm mb-3 row-cols-3">
+          <span class="input-group-text" id="debug-mode-survey-state">Survey State</span>
+          <input type="text" class="form-control col-2" value="{{survey.state}}" readonly
+                 aria-label="Survey State" aria-describedby="debug-mode-survey-state">
+        </div>
+
+        <div class="input-group input-group-sm mb-3 row-cols-3">
+          <span class="input-group-text" id="debug-mode-survey-currentPage">Current Page</span>
+          <input type="text" class="form-control col-2" value="{{survey.currentPage}}" readonly
+                 aria-label="Survey State" aria-describedby="debug-mode-survey-currentPage">
+        </div>
+
+<!--          <div class="input-group input-group-sm mb-3 row-cols-3">-->
+<!--            <select class="form-select" aria-label="Default select example"-->
+<!--                    [(ngModel)]="uiState.sidebar.surveyProperties.selected">-->
+<!--              <option [ngValue]="null" disabled selected>Property</option>-->
+<!--              <option *ngFor="let item of survey | keyvalue"-->
+<!--                      [ngValue]="item.value">-->
+<!--                {{item.key}} - {{item.value | typeof}}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--            <ng-container *ngIf="uiState.sidebar.surveyProperties.selected as value; else selectedValueIsNull">-->
+<!--              <input type="text" class="form-control col-2" aria-label="Value of selected property" readonly-->
+<!--                     [value]="value | json">-->
+<!--            </ng-container>-->
+<!--            <ng-template #selectedValueIsNull>-->
+<!--              <input type="text" class="form-control" aria-label="Value of selected property" readonly>-->
+<!--            </ng-template>-->
+<!--          </div>-->
+
+        <ul class="list-unstyled ps-0">
+          <li class="mb-1">
+            <button class="btn btn-toggle rounded w-100 text-truncate"
+                    (click)="surveyDataCollapse.toggle()"
+                    [attr.aria-expanded]="!uiState.sidebar.surveyData.isCollapsed">
+              <span class="text-truncate">
+                Survey Result
+              </span>
+            </button>
+            <div #surveyDataCollapse="ngbCollapse" [(ngbCollapse)]="uiState.sidebar.surveyData.isCollapsed">
+              <textarea class="form-control" rows="6" readonly>{{survey.data | json}}</textarea>
+            </div>
+          </li>
+        </ul>
+
+      </ng-container>
+
+    </div>
+  </nav>
+
+  <main class="col ms-sm-auto">
+    <router-outlet></router-outlet>
+  </main>
+</div>
+</div>

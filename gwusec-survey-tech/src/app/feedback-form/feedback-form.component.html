@@ -1,0 +1,28 @@
+<div class="container">
+  <ng-container *ngIf="!feedbackSubmitted; else feedbackSubmittedTrue">
+    <div class="card mb-4">
+      <div class="card-header bg-secondary text-white">
+        Please provide any thoughts or suggestions on the survey. (Optional)
+      </div>
+      <div class="card-body">
+        <div class="input-group">
+            <textarea class="form-control" aria-label="Feedback" placeholder="Type your feedback here"
+                      rows="3" [(ngModel)]="model.feedback"></textarea>
+        </div>
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-success" (click)="submitFeedback()">
+          Submit Feedback
+        </button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #feedbackSubmittedTrue>
+    <p #feedbackSubmittedAlert>
+      <ngb-alert type="success" (closed)="feedbackSubmittedAlert.remove()">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <span>Feedback submitted. Thank you.</span>
+      </ngb-alert>
+    </p>
+  </ng-template>
+</div>

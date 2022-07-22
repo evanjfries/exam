@@ -1,0 +1,110 @@
+/*
+ * Navbar
+ */
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar-brand[aria-expanded="true"] {
+    background-color: rgba(0, 0, 0, .25);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+  }
+
+  .collapsing.width {
+    height: auto;
+    //width: 0;
+    transition: width .35s ease;
+  }
+}
+
+.navbar-toggler-icon {
+  background-image: unset;
+}
+
+/*
+ * Sidebar
+ */
+.btn-toggle {
+  display: inline-flex;
+  align-items: center;
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, .65);
+  background-color: transparent;
+  border: 0;
+}
+
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(0, 0, 0, .85);
+  background-color: #d2f4ea;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(0, 0, 0, .85);
+}
+
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a,
+.btn-toggle-nav label {
+  display: inline-block;
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+  width: calc(100% - 1.25rem);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus,
+.btn-toggle-nav input:hover + label,
+.btn-toggle-nav input:focus + label,
+.btn-toggle-nav input:checked + label {
+  background-color: #d2f4ea;
+}
+
+.btn-toggle-nav a:focus,
+.btn-toggle-nav input:focus + label{
+  outline: 1px dotted;
+}
+
+.btn-toggle-nav[disabled],
+.btn-toggle-nav:disabled,
+.btn-toggle-nav a.disabled,
+.btn-toggle-nav input:disabled + label{
+  pointer-events: none;
+  filter: none;
+  opacity: 0.65;
+}
+
+.flex-basis-100 {
+  flex-basis: 100%;
+}
+
+.dropdown-menu {
+  overflow-y: auto;
+  max-height: 50vh;
+}

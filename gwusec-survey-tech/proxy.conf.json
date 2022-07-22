@@ -1,0 +1,6 @@
+{
+  "/api/survey": {
+      "target": "http://localhost:8000/api/survey",
+      "secure": false
+  }
+}

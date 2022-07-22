@@ -1,0 +1,14 @@
+<!-- Navigation bar for the survey. -->
+<nav class="navbar navbar-dark navbar-expand-sm bg-brand-color">
+  <div class="container px-3">
+    <ng-content select="app-navbar-logo"></ng-content>
+    <button class="navbar-toggler" type="button"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"
+            (click)="isMenuCollapsed = !isMenuCollapsed">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+      <ng-content select="app-navbar-content"></ng-content>
+    </div>
+  </div>
+</nav>
