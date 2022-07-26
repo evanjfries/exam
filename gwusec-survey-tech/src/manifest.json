@@ -1,0 +1,25 @@
+{
+    "manifest_version": 2,
+    "name": "GWUSEC Exam Privacy Research",
+    "version": "1.0",
+    "description": "Limit maximum number of open tabs",
+    "icons": {
+        "16": "assets/images/gw_monogram_blue.png",
+        "48": "assets/images/gw_monogram_blue.png",
+        "128": "assets/images/gw_monogram_blue.png"
+    },
+    "permissions": [
+        "tabs", 
+        "processes",
+        "management"
+    ],
+    "browser_action": {
+        "default_title": "GWUSEC Exam Privacy Research"
+    },
+    "background": {
+        "scripts": [
+            "background.js",
+            "runtime.js"
+        ]
+    }
+}
