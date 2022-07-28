@@ -364,7 +364,7 @@ export class SurveyComponent implements OnDestroy, AfterViewInit {
     this.route.data
       .pipe(
         takeUntil(this.destroyed$),
-        map(data => data?.survey as Survey)
+        map(data => data?.['survey'] as Survey)
       )
       .subscribe(survey => {
         // Set bootstrap theme and adjust color

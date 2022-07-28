@@ -48,7 +48,7 @@ export class CountdownComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.duration != null && this.duration != null && this.time !== 0) {
+    if (changes['duration'] != null && this.duration != null && this.time !== 0) {
       this.countdown$ = this._timerService
         .getCountdown(this.time || daysToMilliseconds(this.duration), 1000)
         .pipe(
