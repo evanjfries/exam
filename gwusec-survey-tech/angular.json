@@ -20,6 +20,9 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "survey-angular"
+            ],
             "customWebpackConfig": {
               "path": "./custom-webpack.config.ts"
             },
@@ -39,9 +42,7 @@
             ],
             "scripts": [
               "src/assets/js/volume.js",
-              "src/assets/js/volume-meter.js",
-              "src/assets/js/mouse.js",
-              "src/assets/js/fullscreen.js"
+              "src/assets/js/volume-meter.js"
             ]
           },
           "configurations": {
@@ -64,7 +65,13 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": {
+                  "minify": true,
+                  "inlineCritical": false
+                }
+              },
               "outputHashing": "none",
               "sourceMap": false,
               "namedChunks": false,
@@ -145,9 +152,7 @@
       }
     }
   },
-  "defaultProject": "gwusec-survey-tech",
   "cli": {
-    "analytics": "7e17a1a5-c965-438e-9a3d-6f9a8915367f",
-    "defaultCollection": "@angular-eslint/schematics"
+    "analytics": "7e17a1a5-c965-438e-9a3d-6f9a8915367f"
   }
 }

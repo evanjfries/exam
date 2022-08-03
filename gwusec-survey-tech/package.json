@@ -39,6 +39,7 @@
     "survey-angular": "^1.9.41",
     "tslib": "^2.3.0",
     "webcam-easy": "^1.0.5",
+    "webpack-dev-server": "^4.9.3",
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
