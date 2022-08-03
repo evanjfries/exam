@@ -25,7 +25,7 @@ export function sendResultsTo(url: string, headers: HttpHeaders | {[name: string
     console.log('sendResultsTo', url, headers, partial);
     const sendResultToServer = (surveyRef: SurveyModel) => {
       const result = surveyRef.data;
-      if (result != null && result.participant_id != null) {
+      if (result != null) {
         http.post(
           url,
           {survey: result},
@@ -45,6 +45,8 @@ export function sendResultsTo(url: string, headers: HttpHeaders | {[name: string
             }
           }
         );
+      }else{
+        console.log('Error', result, result.participant_id);
       }
     };
     survey.onComplete.add(sendResultToServer);
