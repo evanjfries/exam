@@ -37,8 +37,8 @@ services:
     command: python manage.py runserver 0.0.0.0:80
     volumes: # the study we want django to run 
       - ./django:/django
-    depends_on: # the db used for storing as defined above
-      - db
+    depends_on: 
+      - "db"
     ports:
       - 8000:80
 

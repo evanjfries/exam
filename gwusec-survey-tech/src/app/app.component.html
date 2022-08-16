@@ -49,7 +49,15 @@
 </div>
 
 <!-- Active view of the application -->
-<router-outlet></router-outlet>
+<div class = "textarea">
+  <router-outlet></router-outlet>
+</div>
+
+<!-- Webcam -->
+<!-- <div class = "webcamview">
+  <app-camera></app-camera>
+  <canvas #meter width="300" height="50"></canvas>
+</div> -->
 
 <!-- Modal Dialogs -->
 <ng-template #withdrawDialog let-modal>

@@ -6,8 +6,12 @@ import {ChangeDetectionStrategy, Component} from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingPageComponent {
+  started=false;
 
   constructor() {
   }
 
+  start(){
+    this.started=true;
+  }
 }

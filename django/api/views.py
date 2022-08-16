@@ -6,7 +6,6 @@ from rest_framework.decorators import api_view
 from .serializer import SurveySerializer
 from .models import Survey
 
-
 @api_view(['GET'])
 def index(request):
     return Response({'Test': 'It works!'})

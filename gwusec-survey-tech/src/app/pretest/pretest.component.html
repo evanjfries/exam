@@ -1,0 +1,68 @@
+<div class = "sidebar">
+    <p class = "{{tabs[0]}}">Step 1: Exam Information</p>
+    <p class = "{{tabs[1]}}">Step 2: Environment Scan</p>
+    <p class = "{{tabs[2]}}">Step 3: Student Photo</p>
+    <p class = "{{tabs[3]}}">Step 4: ID Photo</p>
+</div>
+<div class="textarea">
+
+    <div *ngIf="currentStep == 0">
+    <br>
+    <h3>Instructions</h3>
+    <br>
+    <p >This exam has the following security measures in place. Please click the button below to acknowledge these security features.</p>
+    <ul>
+        <li>Environment Scan</li>
+        <li>Audio Recording</li>
+        <li>Video Recording</li>
+        <li>Screen Recording</li>
+        <li>Mouse Tracking</li>
+        <li>Tab Locking</li>
+    </ul>
+    <br>
+    <button (click)="next()" class= "btn btn-primary" id='nextStep'>Next</button>
+    </div>
+
+    <div *ngIf="currentStep == 1">
+    <br>
+    <h3>Environment Scan</h3>
+    <br>
+    <p>Before continuing with your exam, please scan your environment.</p>
+    <div *ngIf="webcamOn">
+        <app-camera (pictureTaken)="handleImage($event)" [step]="currentStep"></app-camera>
+    </div>
+    <button class= "btn btn-primary" id='getUserMediaButton' *ngIf="!webcamOn" (click)="startWebcam()">Scan Your Environment</button>
+    <button class= "btn btn-primary" id='scan' (click)="next()" *ngIf="webcamOn">Done Scanning Your Environment</button>
+    </div>
+
+    <div *ngIf="currentStep == 2">
+    <br>
+    <h3>Student Photo</h3>
+    <br>
+    <p>Please take a photo of yourself.</p>
+    <div>
+        <div class="snapshot" *ngIf="webcamImage">
+        <img [src]="webcamImage.imageAsDataUrl"/>
+        </div>
+        <app-camera (pictureTaken)="handleImage($event)" [step]="currentStep"></app-camera>
+    </div>
+    <br>
+    <button class= "btn btn-primary" id='scan' (click)="next()" *ngIf="webcamImage">Next</button>
+    </div>
+
+    <div *ngIf="currentStep == 3">
+    <br>
+    <h3>Student Photo</h3>
+    <br>
+    <p>Please take a photo of your ID.</p>
+    <div>
+        <div class="snapshot" *ngIf="webcamImage">
+        <img [src]="webcamImage.imageAsDataUrl"/>
+        </div>
+        <app-camera (pictureTaken)="handleImage($event)" [step]="currentStep"></app-camera>
+    </div>
+    <br>
+    <button class= "btn btn-primary" id='scan' routerLink="/main/survey/test-survey" *ngIf="webcamImage">Begin Test</button>
+    </div>
+</div>
+    
