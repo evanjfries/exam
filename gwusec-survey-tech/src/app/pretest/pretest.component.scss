@@ -1,0 +1,73 @@
+  
+  .textarea {
+    position: absolute;
+    text-align: center;
+    right: 0px;
+    width: 80%;
+    min-height: 100px;
+    overflow: hidden;
+  }
+  
+  .textarea ul {
+    display: inline-block;
+    text-align: left;
+  }
+  
+  .textarea form {
+    text-align: left;
+  }
+
+  .webcamview {
+    position:fixed;
+    top: 100px;
+    right: 100px;
+    text-align: center;
+  }
+  
+  .webcam {
+    width: 300px;
+    height: 300px;
+    z-index: -100;
+    background-size: cover;
+    overflow: hidden;
+  }
+  
+  .sidebar {
+    height:100%;
+    width:20%;
+    left: 0px;
+    position:absolute;
+    z-index:1;
+    min-height: 100px;
+    overflow: hidden;
+    color:#000!important;
+    background-color:#f1f1f1!important;
+  }
+  
+  .sidebar p {
+    display: block;
+    color: black;
+    padding: 16px;
+    text-decoration: none;
+  }
+  
+  .sidebar P.active {
+    background-color: #fff;
+  }
+
+  .example-container {
+    width: 400px;
+    height: 200px;
+    margin: 12px;
+    border: 1px solid #555;
+  }
+
+.snapshot{
+    text-align: center;
+}
+
+.snapshot img{
+    max-width: 400px;
+    max-height: 400px;
+    margin-bottom: 20px;
+}

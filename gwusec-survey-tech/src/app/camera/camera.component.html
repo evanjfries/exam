@@ -1,0 +1,19 @@
+<div style="text-align:center">
+    <div>
+        <webcam *ngIf="step != 4 && showWebcam" [height]="400" [width]="400" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+        [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+        (initError)="handleInitError($event)"></webcam>
+        <webcam *ngIf="step == 4 && showWebcam" [height]="300" [width]="300" [trigger]="triggerObservable" (imageCapture)="handleImage($event)"
+        [allowCameraSwitch]="allowCameraSwitch" [switchCamera]="nextWebcamObservable" [videoOptions]="videoOptions" (cameraSwitched)="cameraWasSwitched($event)"
+        (initError)="handleInitError($event)"></webcam>
+        <br><br>
+        <!-- <div class="actionBtn" (click)="triggerSnapshot();" title="Take Picture"></div> -->
+        <button *ngIf="!taken && step!=1 && step!=4" class= "btn btn-primary" (click)="triggerSnapshot();">Take Snapshot</button>
+        <button *ngIf="taken && step!=1" class= "btn btn-primary" (click)="triggerSnapshot();">Retake</button>
+        <!-- <div class="actionBtn" (click)="showNextWebcam(true);" title="Switch Camera"></div> -->
+    </div>
+</div>
+<h4 *ngIf="errors.length > 0">Messages:</h4>
+<ul *ngFor="let error of errors">
+    <li>{{error | json}}</li>
+</ul>

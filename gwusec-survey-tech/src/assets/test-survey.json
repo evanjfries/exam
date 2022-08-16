@@ -65,240 +65,165 @@
       ]
     },
     {
-      "name": "google_account_usage_page1",
+      "name": "article_page",
       "elements": [
         {
-          "type": "radiogroup",
-          "name": "s1",
-          "title": "Do you have a personal Gmail address (an email address ending in \"gmail.com\")?",
-          "description": "Please select one answer.",
-          "isRequired": true,
-          "choices": [
-            {
-              "value": "Yes",
-              "text": "Yes"
-            },
-            {
-              "value": "No",
-              "text": "No"
-            }
-          ]
-        },
-        {
-          "type": "radiogroup",
-          "name": "s2",
-          "title": "How long have you had that Gmail address?",
-          "description": "Please select one answer.",
-          "isRequired": true,
-          "choices": [
-            {
-              "value": "Less than a year",
-              "text": "Less than a year"
-            },
-            {
-              "value": "One year",
-              "text": "One year"
-            },
-            {
-              "value": "Three years",
-              "text": "Three years"
-            },
-            {
-              "value": "Five years",
-              "text": "Five years"
-            },
-            {
-              "value": "More than five years",
-              "text": "More than five years"
-            },
-            {
-              "value": "I do not have a Gmail address",
-              "text": "I do not have a Gmail address"
-            },
-            {
-              "value": "Unsure",
-              "text": "Unsure"
-            }
-          ]
-        },
-        {
-          "type": "imagepicker",
-          "name": "s3",
-          "title": "Which Google products do you currently use?",
-          "description": "Please select all services you use by clicking the logo.",
-          "isRequired": true,
-          "choices": [
-            {
-              "value": "android",
-              "text": "Android",
-              "imageLink": "assets/icons/android.svg"
-            },
-            {
-              "value": "gmail",
-              "text": "Gmail",
-              "imageLink": "assets/icons/gmail.svg"
-            },
-            {
-              "value": "google_chrome",
-              "text": "Google Chrome",
-              "imageLink": "assets/icons/google-chrome.svg"
-            },
-            {
-              "value": "google_drive",
-              "text": "Google Drive",
-              "imageLink": "assets/icons/google-drive.svg"
-            },
-            {
-              "value": "google_maps",
-              "text": "Google Maps",
-              "imageLink": "assets/icons/google-maps.svg"
-            },
-            {
-              "value": "google_news",
-              "text": "Google News",
-              "imageLink": "assets/icons/google-news.svg"
-            },
-            {
-              "value": "google_pay",
-              "text": "Google Pay",
-              "imageLink": "assets/icons/google-pay.svg"
-            },
-            {
-              "value": "google_play_store",
-              "text": "Google Play Store",
-              "imageLink": "assets/icons/google-play.svg"
-            },
-            {
-              "value": "google_search",
-              "text": "Google Search",
-              "imageLink": "assets/icons/google-search.svg"
-            },
-            {
-              "value": "youtube",
-              "text": "YouTube",
-              "imageLink": "assets/icons/youtube.svg"
-            },
-            {
-              "value": "none",
-              "text": "None",
-              "imageLink": "assets/icons/icon-none.svg"
-            }
-          ],
-          "colCount": 4,
-          "showLabel": true,
-          "multiSelect": true,
-          "imageHeight": 96,
-          "imageWidth": 96
+        "type": "html",
+          "name": "survey_instructions",
+          "html": "<div class=\"bg-light p-5\"><h4>Please read the following Wikipedia article.</h4><hr class=\"my-4\"><p>Please read carefully, as the questions to the test will be based on the content of the article.</li></ul>\n<div><img src=\"assets/images/bigrainbow.png\" height=\"800\"></div></div>"
         }
       ]
     },
     {
-      "name": "google_account_usage_page2",
+      "name": "test",
       "elements": [
         {
-          "type": "matrix",
-          "name": "s4",
-          "visibleIf": "{s3} notempty and {s3} notcontains ['none']",
-          "title": "How frequently do you use these products?",
-          "description": "Please select one answer in each row.",
-          "isRequired": true,
-          "rowsVisibleIf": "{s3} contains {item}",
-          "columns": [
-            {
-              "value": "Always",
-              "text": "Always"
-            },
-            {
-              "value": "Often",
-              "text": "Often"
-            },
-            {
-              "value": "Sometimes",
-              "text": "Sometimes"
-            },
-            {
-              "value": "Rarely",
-              "text": "Rarely"
-            },
-            {
-              "value": "Never",
-              "text": "Never"
-            },
-            {
-              "value": "Unsure",
-              "text": "Unsure"
-            }
-          ],
-          "rows": [
-            {
-              "value": "android",
-              "text": "<img src=\"assets/icons/android.svg\" alt=\"Android\" width=\"24px\" height=\"24px\"> Android"
-            },
-            {
-              "value": "gmail",
-              "text": "<img src=\"assets/icons/gmail.svg\" alt=\"Gmail\" width=\"24px\" height=\"24px\"> Gmail"
-            },
-            {
-              "value": "google_chrome",
-              "text": "<img src=\"assets/icons/google-chrome.svg\" alt=\"Google Chrome\" width=\"24px\" height=\"24px\"> Google Chrome"
-            },
-            {
-              "value": "google_drive",
-              "text": "<img src=\"assets/icons/google-drive.svg\" alt=\"Google Drive\" width=\"24px\" height=\"24px\"> Google Drive"
-            },
-            {
-              "value": "google_maps",
-              "text": "<img src=\"assets/icons/google-maps.svg\" alt=\"Google Maps\" width=\"24px\" height=\"24px\"> Google Maps"
-            },
-            {
-              "value": "google_news",
-              "text": "<img src=\"assets/icons/google-news.svg\" alt=\"Google News\" width=\"24px\" height=\"24px\"> Google News"
-            },
-            {
-              "value": "google_pay",
-              "text": "<img src=\"assets/icons/google-pay.svg\" alt=\"Google Pay\" width=\"24px\" height=\"24px\"> Google Pay"
-            },
-            {
-              "value": "google_play_store",
-              "text": "<img src=\"assets/icons/google-play.svg\" alt=\"Google Play Store\" width=\"24px\" height=\"24px\"> Google Play Store"
-            },
-            {
-              "value": "google_search",
-              "text": "<img src=\"assets/icons/google-search.svg\" alt=\"Google Search\" width=\"24px\" height=\"24px\"> Google Search"
-            },
-            {
-              "value": "youtube",
-              "text": "<img src=\"assets/icons/youtube.svg\" alt=\"YouTube\" width=\"24px\" height=\"24px\"> YouTube"
-            }
-          ],
-          "isAllRowRequired": true
-        },
-        {
           "type": "radiogroup",
-          "name": "s5",
-          "title": "How important is using Google products to your Internet experience?",
+          "name": "q1",
+          "title": "What color is the Big Rainbow Tomato?",
           "description": "Please select one answer.",
           "isRequired": true,
           "choices": [
             {
-              "value": "Not important",
-              "text": "Not important"
+              "value": "Red",
+              "text": "Red"
             },
             {
-              "value": "Slightly important",
-              "text": "Slightly important"
+              "value": "Yellow",
+              "text": "Yellow"
             },
             {
-              "value": "Moderately important",
-              "text": "Moderately important"
+              "value": "Yellow with red swirls",
+              "text": "Yellow with red swirls"
             },
             {
-              "value": "Important",
-              "text": "Important"
+              "value": "Red with yellow dots",
+              "text": "Red with yellow dots"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "q2",
+          "title": "What flavor is the Big Rainbow Tomato?",
+          "description": "Please select one answer.",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Mild and sweet",
+              "text": "Mild and sweet"
             },
             {
-              "value": "Very important",
-              "text": "Very important"
+              "value": "Slightly bitter",
+              "text": "Slightly bitter"
+            },
+            {
+              "value": "Strong and spicy",
+              "text": "Strong and spicy"
+            },
+            {
+              "value": "Sickeningly sweet",
+              "text": "Sickeningly sweet"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "q3",
+          "title": "What is the name of a similarly-colored tomato?",
+          "description": "Please select one answer.",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Supersilly",
+              "text": "Supersilly"
+            },
+            {
+              "value": "Wetwilly",
+              "text": "Wetwilly"
+            },
+            {
+              "value": "Spicychili",
+              "text": "Spicychili"
+            },
+            {
+              "value": "Hillbilly",
+              "text": "Hillbilly"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "q4",
+          "title": "When can the Big Rainbow Tomato be cultivated?",
+          "description": "Please select one answer.",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "First month of spring",
+              "text": "First month of spring"
+            },
+            {
+              "value": "Last month of summer",
+              "text": "Last month of summer"
+            },
+            {
+              "value": "Second week of fall",
+              "text": "Second week of fall"
+            },
+            {
+              "value": "Beginning of winter",
+              "text": "Beginning of winter"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "q5",
+          "title": "When was the Big Rainbow Tomato commercially presented?",
+          "description": "Please select one answer.",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "1983",
+              "text": "1983"
+            },
+            {
+              "value": "1993",
+              "text": "1993"
+            },
+            {
+              "value": "1990",
+              "text": "1990"
+            },
+            {
+              "value": "1980",
+              "text": "1980"
+            }
+          ]
+        },
+        {
+          "type": "radiogroup",
+          "name": "q6",
+          "title": "What conditions can the Big Rainbow tomato be cultivated in?",
+          "description": "Please select one answer.",
+          "isRequired": true,
+          "choices": [
+            {
+              "value": "Cold",
+              "text": "Cold"
+            },
+            {
+              "value": "Warm",
+              "text": "Warm"
+            },
+            {
+              "value": "Hot",
+              "text": "Hot"
+            },
+            {
+              "value": "Mild",
+              "text": "Mild"
             }
           ]
         }

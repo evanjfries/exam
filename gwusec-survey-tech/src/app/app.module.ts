@@ -1,4 +1,4 @@
-import {Injector, NgModule} from '@angular/core';
+import {Injector, NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
 import {NavbarModule} from './navbar/navbar.module';
@@ -17,13 +17,18 @@ import {FeedBackFormModule} from './feedback-form/feed-back-form.module';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {WebStorageModule} from './web-storage/web-storage.module';
+import { CameraComponent } from './camera/camera.component';
+import { WebcamModule } from 'ngx-webcam';
+import { PretestComponent } from './pretest/pretest.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     LandingPageComponent,
-    WithdrawDialogComponent
+    WithdrawDialogComponent,
+    CameraComponent,
+    PretestComponent
   ],
   imports: [
     BrowserModule,
@@ -35,8 +40,10 @@ import {WebStorageModule} from './web-storage/web-storage.module';
     NgbCollapseModule,
     AppRoutingModule,
     FeedBackFormModule,
-    WebStorageModule
+    WebStorageModule,
+    WebcamModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
     {
       provide: 'surveyServiceConfig',
