@@ -70,13 +70,18 @@
         {
         "type": "html",
           "name": "survey_instructions",
-          "html": "<div class=\"bg-light p-5\"><h4>Please read the following Wikipedia article.</h4><hr class=\"my-4\"><p>Please read carefully, as the questions to the test will be based on the content of the article.</li></ul>\n<div><img src=\"assets/images/bigrainbow.png\" height=\"800\"></div></div>"
+          "html": "<div class=\"bg-light p-5\"><h4>Press the button to display a Wikipedia article.</h4><strong id=\"timer\"></strong><hr class=\"my-4\"><p>Once pressed, you will have 3 minutes to read the article. Please read carefully, as the questions to the test will be based on the content of the article.</li></ul><div> <button type=\"button\" class=\"btn btn-primary ms-2 sv_next_btn\" id=\"showArticle\" onclick=\"showArticle\">Show Article</button> </div>\n<div><img id = \"article\" hidden=\"true\" src=\"assets/images/bigrainbow.png\" height=\"800\"></div></div>"
         }
       ]
     },
     {
       "name": "test",
       "elements": [
+        {
+          "type": "html",
+          "name": "volume_meter",
+          "html": "<canvas id=\"meter\" width=\"300\" height=\"50\"></canvas>"
+        },
         {
           "type": "radiogroup",
           "name": "q1",

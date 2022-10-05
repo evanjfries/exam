@@ -6,6 +6,11 @@ var HEIGHT=50;
 var rafID = null;
 var canvasContext = null;
 
+window.addEventListener('load', function() {
+    canvasContext = document.getElementById("meter").getContext("2d");
+    startVolumeMeter(canvasContext);
+});
+
 function startVolumeMeter(canvasContext) {
 	
     this.canvasContext = canvasContext;

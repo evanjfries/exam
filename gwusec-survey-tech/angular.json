@@ -42,7 +42,8 @@
             ],
             "scripts": [
               "src/assets/js/volume.js",
-              "src/assets/js/volume-meter.js"
+              "src/assets/js/volume-meter.js",
+              "src/assets/js/timer.js"
             ]
           },
           "configurations": {
