@@ -9,6 +9,7 @@
     <app-navbar-content>
       <ul class="navbar-nav mr-auto mt-2 mt-sm-0">
         <li class="nav-item">
+          <img src="chrome-extension://godfjbahhcglkdbegoanaplkpildiaji/assets/images/extension-enabled.png" hidden class="extensionCheck" (load)="this.extensionInstalled = true">
           <a class="nav-link" routerLink="/">
             Start
           </a>
@@ -49,8 +50,27 @@
 </div>
 
 <!-- Active view of the application -->
-<div class = "textarea">
+<div class = "textarea" *ngIf="extensionInstalled">
+  <canvas id="meter" width="300" height="50"></canvas>
   <router-outlet></router-outlet>
+</div>
+
+
+<div class = "textarea" *ngIf="!extensionInstalled">
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="assets/images/gwusec.svg" alt="" width="72" height="57">
+    <h1 class="display-5 fw-bold">Please Install Extension</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">
+        The test-proctoring extension is not installed. Please click the button below once it has been installed.
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button"  class="btn btn-primary btn-lg px-4 gap-3" (click)="check()">
+          Confirm Installation
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Webcam -->

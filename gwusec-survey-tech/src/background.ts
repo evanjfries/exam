@@ -1,8 +1,11 @@
+import { browser } from "protractor";
+
 var usedOn: any = {};
 var openedOn: any = {};
 var accessed: any = {};
 var activeTabId;
 var timeout: any;
+var tabs: any;
 var activeInterval = 2500;
 
 // function _debug() {
@@ -79,11 +82,60 @@ function _removeWindow(windowId: any){
 }
 
 function _removeWindows() {
+    var curId;
+    chrome.windows.getCurrent({}, function(window: any){
+        curId = window.id;
+    })
     chrome.windows.getAll({}, function(windows: any){
         for(var i = 0; i < windows.length; i++){
-            chrome.windows.remove(windows[i].id);
+            if(windows[i].id != curId){
+                // if(confirm("Click \"OK\" to close external Chrome window.")){
+                chrome.windows.remove(windows[i].id);
+                // }else{
+                // }
+            }
         }
     });
+}
+
+function _getTabs() {
+    return new Promise((resolve, reject) => {
+        try {
+            chrome.tabs.query({}, function (tabs) {
+                resolve(tabs);
+            })
+        } catch (e) {
+            reject(e);
+        }
+    })
+}
+
+async function _checkTabs(){
+    tabs = await _getTabs();
+    var onTest = false;
+    for(var i=0; i<tabs.length; i++){
+        // alert(tabs[i].url?.substring(0, 16));
+        // alert(tabs[i].url);
+        if(tabs[i].url?.substring(0, 16) == "http://localhost") onTest = true;
+    }
+    // alert(onTest);
+    return onTest;
+}
+
+function _removeTabs(){
+    chrome.tabs.query({}, function(tabs) {
+        for(var i=0; i<tabs.length; i++){
+            // alert(tabs[i].url?.substring(0, 16));
+            if(tabs[i].url?.substring(0, 16) != "http://localhost"){
+                if(confirm("Click \"OK\" to close tab at " + tabs[i].url + ". \nThis extension requires that all non-survey tabs are closed.")){
+                    _removeTab(tabs[i].id);
+                }else{
+                    alert("Chrome extension is disabling itself. Please reenable to complete survey.")
+                    chrome.management.setEnabled(chrome.runtime.id, false);
+                }
+            }
+        }
+    } );
 }
 
 function _handleWindowAdded(data: any) {
@@ -103,13 +155,21 @@ function _bindEvents() {
     chrome.windows.onCreated.addListener(_handleWindowAdded);
 }
 
-function _init() {
-    _removeWindows();
-    chrome.windows.create({
-        url: chrome.runtime.getURL("index.html"),
-        state:"maximized"
-    });
-    _bindEvents();
+async function _init() {
+    var testOpen = await _checkTabs();
+    if(testOpen){
+        _removeTabs();
+        _removeWindows();
+        // chrome.windows.create({
+        //     url: chrome.runtime.getURL("index.html"),
+        //     state:"maximized"
+        // });
+        _bindEvents();
+    }else{
+        alert("Must open survey at http://localhost");
+        alert("Chrome extension is disabling itself. Please reenable to complete survey.")
+        chrome.management.setEnabled(chrome.runtime.id, false);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function(event) { 

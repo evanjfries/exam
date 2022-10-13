@@ -14,4 +14,9 @@ export class LandingPageComponent {
   start(){
     this.started=true;
   }
+  
 }
+
+
+
+

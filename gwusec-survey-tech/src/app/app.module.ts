@@ -28,7 +28,7 @@ import { PretestComponent } from './pretest/pretest.component';
     LandingPageComponent,
     WithdrawDialogComponent,
     CameraComponent,
-    PretestComponent
+    PretestComponent,
   ],
   imports: [
     BrowserModule,
