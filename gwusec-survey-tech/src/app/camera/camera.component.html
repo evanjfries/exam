@@ -8,7 +8,7 @@
         (initError)="handleInitError($event)"></webcam>
         <br><br>
         <!-- <div class="actionBtn" (click)="triggerSnapshot();" title="Take Picture"></div> -->
-        <button *ngIf="!taken && step!=1 && step!=4" class= "btn btn-primary" (click)="triggerSnapshot();">Take Snapshot</button>
+        <button *ngIf="!taken && step != 1 && step!=5" class= "btn btn-primary" (click)="triggerSnapshot();">Take Snapshot</button>
         <button *ngIf="taken && step!=1" class= "btn btn-primary" (click)="triggerSnapshot();">Retake</button>
         <!-- <div class="actionBtn" (click)="showNextWebcam(true);" title="Switch Camera"></div> -->
     </div>

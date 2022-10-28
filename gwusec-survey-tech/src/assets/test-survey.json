@@ -78,9 +78,6 @@
       "name": "test",
       "elements": [
         {
-          "type": "html",
-          "name": "volume_meter",
-          "html": "<canvas id=\"meter\" width=\"300\" height=\"50\"></canvas>"
         },
         {
           "type": "radiogroup",

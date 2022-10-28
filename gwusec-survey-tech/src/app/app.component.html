@@ -51,8 +51,14 @@
 
 <!-- Active view of the application -->
 <div class = "textarea" *ngIf="extensionInstalled">
-  <canvas id="meter" width="300" height="50"></canvas>
   <router-outlet></router-outlet>
+  <!-- <div>
+    <div class="webcamview" *ngIf="webcamImage">
+    <img [src]="webcamImage.imageAsDataUrl"/>
+    </div>
+    <app-camera ></app-camera>
+    <canvas id="meter" width="300" height="50"></canvas>
+  </div> -->
 </div>
 
 
