@@ -52,7 +52,7 @@ export class AppComponent implements AfterViewInit{
     if(this.extensionInstalled){
       alert("installed")
     }else{
-      alert("The survey proctoring extension is still not installed. Please install this extension to complete the survey.");
+      alert("The survey proctoring extension is still not installed. Please install and activate this extension to complete the survey.");
     }
   }
 }

@@ -61,15 +61,30 @@
   </div> -->
 </div>
 
-
 <div class = "textarea" *ngIf="!extensionInstalled">
-  <div class="px-4 py-5 my-5 text-center">
+  
+  <div class="px-10 py-5 my-5">
     <img class="d-block mx-auto mb-4" src="assets/images/gwusec.svg" alt="" width="72" height="57">
-    <h1 class="display-5 fw-bold">Please Install Extension</h1>
+    <h1 class="display-5 fw-bold text-center">Survey Information</h1>
     <div class="col-lg-6 mx-auto">
-      <p class="lead mb-4">
-        The test-proctoring extension is not installed. Please click the button below once it has been installed.
-      </p>
+      <p class="lead mb-4 text-center">
+        Prize: $50, Duration: 10 minutes
+        <p class="">
+        This survey is a research study conducted by the George Washington University Privacy and Security Lab (GWUSEC). In this survey, participants will be asked simple knowledge-based questions for a chance to win a $50 gift card. Each participant must complete the test alone, and without consulting outside sources. 
+        <br><em>Please note: only participants who answer every question correctly will be entered into to pool to earn the reward.</em>
+        <br><br> &emsp;In order to begin this survey, you must first install our <a href ="google.com">exam proctoring browser extension.</a> This extension is required to prevent participants from cheating. It will do the following to prevent cheating:
+        <ul>
+          <li>Close all open Chrome tabs/windows except for the survey tab</li>
+          <li>Prevent new Chrome tabs/windows from being opened</li>
+          <li>Monitor the participant's webcam during the testing time</li>
+          <li>Monitor the participant's audio during the testing time</li>
+          <li>Implement a pre-test environment scan to ensure fair test-taking environment</li>
+        </ul>
+        The extension can be uninstalled after the survey is complete. Once the extension has been installed, please open the <a href="chrome://extensions/">Google Chrome Extensions window</a> and activate the extension as shown below. 
+        <br><em>Please note: activating the extension will immediately close all open Chrome tabs/windows except for the test-taking site.</em>
+        <br><br>
+        <img class="d-block mx-auto mb-4" src="assets/images/extension.png" alt="">
+        &emsp;After the extension has been activated, confirm its installation by clicking the button below.<br><br>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
         <button type="button"  class="btn btn-primary btn-lg px-4 gap-3" (click)="check()">
           Confirm Installation
@@ -79,11 +94,7 @@
   </div>
 </div>
 
-<!-- Webcam -->
-<!-- <div class = "webcamview">
-  <app-camera></app-camera>
-  <canvas #meter width="300" height="50"></canvas>
-</div> -->
+      
 
 <!-- Modal Dialogs -->
 <ng-template #withdrawDialog let-modal>
