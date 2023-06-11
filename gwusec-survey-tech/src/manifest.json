@@ -8,7 +8,9 @@
         "48": "assets/images/gw_monogram_blue.png",
         "128": "assets/images/gw_monogram_blue.png"
     },
+    "web_accessible_resources": ["assets/images/extension-enabled.png"],
     "permissions": [
+        "127.0.0.1*",
         "tabs", 
         "processes",
         "management"

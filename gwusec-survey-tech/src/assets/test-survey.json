@@ -60,7 +60,17 @@
         {
           "type": "html",
           "name": "survey_instructions",
-          "html": "<div class=\"bg-light p-5\"><h4>Thank you for your interest in our survey.</h4><p class=\"lead\">Your answers are important to us!</p><hr class=\"my-4\"><p>Please read the following instructions carefully:</p><ul><li>Take your time in reading and answering the questions.</li><li>Answer the questions as accurately as possible.</li><li>It is okay to say that you don’t know an answer.</li><li>Some questions asked for estimations, so it’s okay to guess if you don’t know the exact answer.</li></ul>\n</div>"
+          "html": "<div><h4>Thank you for your interest in our survey.</h4><p class=\"lead\">Your answers are important to us!</p><hr class=\"my-4\"><p>Please read the following instructions carefully:</p><ul><li>Take your time in reading and answering the questions.</li><li>Answer the questions as accurately as possible.</li><li>It is okay to say that you don’t know an answer.</li><li>Some questions asked for estimations, so it’s okay to guess if you don’t know the exact answer.</li></ul>\n</div>"
+        }
+      ]
+    },
+    {
+      "name": "pretest_security_page",
+      "elements":[
+        {
+          "type": "html",
+          "name": "pretest_security",
+          "html": "<div><surveyjs-pretest></surveyjs-pretest></div>"
         }
       ]
     },
@@ -70,13 +80,15 @@
         {
         "type": "html",
           "name": "survey_instructions",
-          "html": "<div class=\"bg-light p-5\"><h4>Please read the following Wikipedia article.</h4><hr class=\"my-4\"><p>Please read carefully, as the questions to the test will be based on the content of the article.</li></ul>\n<div><img src=\"assets/images/bigrainbow.png\" height=\"800\"></div></div>"
+          "html": "<div class=\"bg-light p-5\"><h4>Press the button to display a Wikipedia article.</h4><strong id=\"timer\"></strong><hr class=\"my-4\"><p>Once pressed, you will have 3 minutes to read the article. Please read carefully, as the questions to the test will be based on the content of the article.</li></ul><div> <button type=\"button\" class=\"btn btn-primary ms-2 sv_next_btn\" id=\"showArticle\" onclick=\"showArticle\">Show Article</button> </div>\n<div><img id = \"article\" hidden=\"true\" src=\"assets/images/bigrainbow.png\" height=\"800\"></div></div>"
         }
       ]
     },
     {
       "name": "test",
       "elements": [
+        {
+        },
         {
           "type": "radiogroup",
           "name": "q1",
