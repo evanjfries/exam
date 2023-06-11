@@ -14,10 +14,10 @@ import {WithdrawDialogComponent} from './withdraw-dialog/withdraw-dialog.compone
 import {ActiveSurveyService} from './survey/active-survey.service';
 import {renderTextAsHTML, sendResultsTo, surveyToggleNone} from './survey-utils';
 import {FeedBackFormModule} from './feedback-form/feed-back-form.module';
+import {PretestModule} from './pretest/pretest.module';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 import {WebStorageModule} from './web-storage/web-storage.module';
-import { CameraComponent } from './camera/camera.component';
 import { WebcamModule } from 'ngx-webcam';
 import { PretestComponent } from './pretest/pretest.component';
 
@@ -27,8 +27,6 @@ import { PretestComponent } from './pretest/pretest.component';
     PageNotFoundComponent,
     LandingPageComponent,
     WithdrawDialogComponent,
-    CameraComponent,
-    PretestComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +38,7 @@ import { PretestComponent } from './pretest/pretest.component';
     NgbCollapseModule,
     AppRoutingModule,
     FeedBackFormModule,
+    PretestModule,
     WebStorageModule,
     WebcamModule,
   ],
@@ -74,7 +73,9 @@ export class AppModule {
 
   constructor(injector: Injector) {
     const feedbackFormElement = createCustomElement(FeedbackFormComponent, {injector});
+    const pretestElement = createCustomElement(PretestComponent, {injector});
     customElements.define('surveyjs-feedback-form', feedbackFormElement);
+    customElements.define('surveyjs-pretest', pretestElement);
   }
 
 }

@@ -379,4 +379,6 @@ export class SurveyComponent implements OnDestroy, AfterViewInit {
         }
       });
   }
+
+  
 }

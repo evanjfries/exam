@@ -1,11 +1,9 @@
   
   .textarea {
-    position: absolute;
     text-align: center;
-    right: 0px;
+    right: 0;
     width: 80%;
-    min-height: 100px;
-    overflow: hidden;
+    position: fixed;
   }
   
   .textarea ul {
@@ -70,4 +68,8 @@
     max-width: 400px;
     max-height: 400px;
     margin-bottom: 20px;
+}
+
+.bullets{
+  list-style-position: inside;
 }
